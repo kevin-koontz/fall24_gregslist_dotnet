@@ -1,7 +1,7 @@
 namespace gregslist_csharp.Controllers;
 
 [ApiController]
-[Route("1pi/[controller]")]
+[Route("api/[controller]")]
 public class HousesController : ControllerBase
 {
 
