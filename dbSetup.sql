@@ -70,12 +70,40 @@ FROM cars
 
 CREATE TABLE houses (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    createdAt DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT 'Time Created',
+    updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT 'Last Update',
     sqft INT NOT NULL,
     bedrooms INT NOT NULL,
     bathrooms DOUBLE NOT NULL,
     imgUrl VARCHAR(255) NOT NULL,
     description VARCHAR(255) NOT NULL,
-    price INT NOT NULL,
-    createdAt DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT 'Time Created',
-    updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT 'Last Update',
+    price INT NOT NULL
+    -- creatorId VARCHAR(255) NOT NULL,
+    -- FOREIGN KEY (creatorId) REFERENCES accounts (id) ON DELETE CASCADE
 );
+
+DROP TABLE houses;
+
+INSERT INTO
+    houses (
+        sqft,
+        bedrooms,
+        bathrooms,
+        imgUrl,
+        description,
+        price
+        -- creatorId
+    )
+VALUES (
+        3000,
+        5,
+        5,
+        'https://images.unsplash.com/photo-1510798831971-661eb04b3739?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aG9tZSUyMHNub3clMjBtb3VudGFpbnxlbnwwfHwwfHx8MA%3D%3D',
+        'dream house',
+        500000
+        -- ''
+    );
+
+-- SELECT houses.*, accounts.*
+-- FROM houses
+--     JOIN accounts ON houses.creatorId = accounts.id;
