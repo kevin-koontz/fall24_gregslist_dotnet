@@ -1,5 +1,6 @@
 
 
+
 namespace gregslist_csharp.Services;
 
 public class HousesService
@@ -15,5 +16,11 @@ public class HousesService
   {
     List<House> houses = _repository.GetAllHouses();
     return houses;
+  }
+
+  internal House CreateHouse(House houseData)
+  {
+    House house = _repository.CreateHouse(houseData);
+    return house;
   }
 }

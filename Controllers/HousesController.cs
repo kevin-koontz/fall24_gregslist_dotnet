@@ -28,4 +28,21 @@ public class HousesController : ControllerBase
       return BadRequest(error.Message);
     }
   }
+
+  [Authorize]
+  [HttpPost]
+  public async Task<ActionResult<House>> CreateHouse([FromBody] House houseData)
+  {
+    try
+    {
+      Account userInfo = await _auth0Provider.GetUserInfoAsync<Account>(HttpContext);
+      houseData.CreatorId = userInfo.Id;
+      House house = _housesService.CreateHouse(houseData);
+      return Ok(house);
+    }
+    catch (Exception error)
+    {
+      return BadRequest(error.Message);
+    }
+  }
 }

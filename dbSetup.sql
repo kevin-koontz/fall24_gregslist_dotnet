@@ -77,9 +77,9 @@ CREATE TABLE houses (
     bathrooms DOUBLE NOT NULL,
     imgUrl VARCHAR(255) NOT NULL,
     description VARCHAR(255) NOT NULL,
-    price INT NOT NULL
-    -- creatorId VARCHAR(255) NOT NULL,
-    -- FOREIGN KEY (creatorId) REFERENCES accounts (id) ON DELETE CASCADE
+    price INT NOT NULL,
+    creatorId VARCHAR(255) NOT NULL,
+    FOREIGN KEY (creatorId) REFERENCES accounts (id) ON DELETE CASCADE
 );
 
 DROP TABLE houses;
@@ -91,19 +91,19 @@ INSERT INTO
         bathrooms,
         imgUrl,
         description,
-        price
-        -- creatorId
+        price,
+        creatorId
     )
 VALUES (
-        3000,
-        5,
-        5,
+        2000,
+        4,
+        4,
         'https://images.unsplash.com/photo-1510798831971-661eb04b3739?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aG9tZSUyMHNub3clMjBtb3VudGFpbnxlbnwwfHwwfHx8MA%3D%3D',
-        'dream house',
-        500000
-        -- ''
+        'great house',
+        400000,
+        '66f9bd78f36d0f6c51de8964'
     );
 
--- SELECT houses.*, accounts.*
--- FROM houses
---     JOIN accounts ON houses.creatorId = accounts.id;
+SELECT houses.*, accounts.*
+FROM houses
+    JOIN accounts ON houses.creatorId = accounts.id;
